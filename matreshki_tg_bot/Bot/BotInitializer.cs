@@ -33,6 +33,8 @@ public class BotInitializer
             receiverOptions,
             _cancellationTokenSource.Token
         );
+        
+        _botClient.DeleteWebhookAsync();
     }
 
     public string GetBotName()

@@ -63,8 +63,6 @@ public class BotRequestHandlers
                         ? new ReplyKeyboardRemove()
                         : botMessage.InlineKeyboardMarkups,
                     cancellationToken: cancellationToken);
-                
-                await botClient.AnswerCallbackQueryAsync("", null);
             }
         }
         catch (Exception e)
