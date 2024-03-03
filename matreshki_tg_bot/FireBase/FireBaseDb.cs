@@ -21,14 +21,26 @@ public class FireBaseDb
     public async void CreateUser(User user)
     {
         DocumentReference docRef = db.Collection("users").Document($"{user.UserId}");
-        
-        await docRef.SetAsync(JsonConvert.DeserializeObject(user.ToJson()));
+
+        await docRef.CreateAsync(user.toJson());
     }
 
-    public bool UserExist(long userId)
+    public async Task<bool> UserExist(long userId)
     {
-        var user = db.Collection("users").Document($"{userId}");
+        var user = db.Collection("users").ListDocumentsAsync();
 
-        return user != null;
+        var flag = false;
+        
+        await user.ForEachAwaitAsync(reference =>
+        {
+            if (reference.Id == $"{userId}")
+            {
+                flag = true;
+            }
+
+            return Task.CompletedTask;
+        });
+        
+        return flag;
     }
 }

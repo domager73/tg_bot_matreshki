@@ -21,7 +21,7 @@ public class ChatsRouter
     {
         if (!_chatTransmittedDataPairs.ContainsKey(chatId))
         {
-            if (_fireBase.UserExist(chatId))
+            if (!_fireBase.UserExist(chatId).Result)
             {
                 _fireBase.CreateUser(new User()
                 {

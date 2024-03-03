@@ -63,6 +63,8 @@ public class BotRequestHandlers
                         ? new ReplyKeyboardRemove()
                         : botMessage.InlineKeyboardMarkups,
                     cancellationToken: cancellationToken);
+                
+                
             }
         }
         catch (Exception e)
