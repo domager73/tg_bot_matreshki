@@ -1,8 +1,5 @@
-using System.Collections.Immutable;
-using FireSharp.Extensions;
 using Google.Cloud.Firestore;
 using matreshki_tg_bot.Models;
-using Newtonsoft.Json;
 
 namespace matreshki_tg_bot.FireBase;
 
@@ -43,4 +40,13 @@ public class FireBaseDb
         
         return flag;
     }
+    // public async Task<bool> GetUserInfo(long userId)
+    // {
+    //     var user = db.Collection("users").ListDocumentsAsync();
+    //
+    //     
+    //     await user.FirstOrDefaultAsync(userId);
+    //     
+    //     return flag;
+    // }
 }

@@ -26,7 +26,9 @@ public class ChatsRouter
                 _fireBase.CreateUser(new User()
                 {
                     Score = 0,
-                    UserId = chatId
+                    UserId = chatId,
+                    ScorePerClick = 1,
+                    Energy = 1000,
                 });
             }
 
