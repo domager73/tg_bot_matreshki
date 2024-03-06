@@ -1,3 +1,5 @@
+using matreshki_tg_bot.Models;
+
 namespace matreshki_tg_bot.Utils;
 
 public class DialogStrings
@@ -47,4 +49,6 @@ public class DialogStrings
 Для начала игры просто нажми Старт или используй команду /start. Удачи и пусть удача всегда будет на твоей стороне! 🍀✨";
 
     public const string Help = "Я тебе помог бро";
+    
+    public static string GetUserStats(User user) => $"Energy: {user.Energy}\nScore per click: {user.ScorePerClick}\nScore: {user.Score}";
 }

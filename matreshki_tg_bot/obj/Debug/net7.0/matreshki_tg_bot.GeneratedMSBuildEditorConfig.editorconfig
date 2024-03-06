@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = matreshki_tg_bot
-build_property.ProjectDir = C:\Users\user\Desktop\matreshki_tg_bot\matreshki_tg_bot\
+build_property.ProjectDir = /Users/domager73/Documents/c#ConsoleAplication/tg_bot_matreshki/matreshki_tg_bot/

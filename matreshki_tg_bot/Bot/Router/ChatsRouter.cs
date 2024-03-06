@@ -23,13 +23,7 @@ public class ChatsRouter
         {
             if (!_fireBase.UserExist(chatId).Result)
             {
-                _fireBase.CreateUser(new User()
-                {
-                    Score = 0,
-                    UserId = chatId,
-                    ScorePerClick = 1,
-                    Energy = 1000,
-                });
+                _fireBase.CreateUser(new User().UserDefault(chatId: chatId));
             }
 
             _chatTransmittedDataPairs.CreateNew(chatId);

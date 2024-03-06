@@ -22,4 +22,26 @@ public class User
             { "score_per_click", ScorePerClick },
         };
     }
+
+    public User UserDefault(long chatId)
+    {
+        return new User()
+        {
+            Score = 0,
+            UserId = chatId,
+            ScorePerClick = 1,
+            Energy = 1000,
+        };
+    }
+    
+    public User UserFromJson(Dictionary<string, object> json)
+    {
+        return new User()
+        {
+            Score = Convert.ToInt32(json["score"]),
+            UserId = Convert.ToInt64(json["user_id"]),
+            ScorePerClick = Convert.ToInt32(json["score_per_click"]),
+            Energy = Convert.ToInt32(json["energy"]),
+        };
+    }
 }

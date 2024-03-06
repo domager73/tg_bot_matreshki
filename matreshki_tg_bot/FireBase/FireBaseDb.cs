@@ -10,7 +10,7 @@ public class FireBaseDb
     public FireBaseDb()
     {
         System.Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS",
-            "C:\\Users\\user\\Downloads\\Telegram Desktop\\matreshki-13a87-10bcd47ab536.json");
+            "matreshki-13a87-10bcd47ab536.json");
 
         db = FirestoreDb.Create("matreshki-13a87");
     }
@@ -40,13 +40,11 @@ public class FireBaseDb
         
         return flag;
     }
-    // public async Task<bool> GetUserInfo(long userId)
-    // {
-    //     var user = db.Collection("users").ListDocumentsAsync();
-    //
-    //     
-    //     await user.FirstOrDefaultAsync(userId);
-    //     
-    //     return flag;
-    // }
+
+    public User GetUserById(long userId)
+    {
+        var user = db.Collection("users").Document($"{userId}").GetSnapshotAsync().Result;
+
+        return new User().UserFromJson(user.ToDictionary());
+    }
 }

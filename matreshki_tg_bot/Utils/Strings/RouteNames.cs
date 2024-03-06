@@ -6,4 +6,5 @@ public class RouteNames
     public static string Help = "/help";
     public static string Info = "/info";
     public static string Main = "/main";
+    public static string Stats = "/stats";
 }
