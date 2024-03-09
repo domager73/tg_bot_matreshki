@@ -19,7 +19,7 @@ public class FireBaseDb
     {
         DocumentReference docRef = db.Collection("users").Document($"{user.UserId}");
 
-        await docRef.CreateAsync(user.toJson());
+        await docRef.CreateAsync(user.ToJson());
     }
 
     public async Task<bool> UserExist(long userId)
@@ -45,6 +45,22 @@ public class FireBaseDb
     {
         var user = db.Collection("users").Document($"{userId}").GetSnapshotAsync().Result;
 
-        return new User().UserFromJson(user.ToDictionary());
+        return new User().FromJson(user.ToDictionary());
+    }
+
+    public async Task UpdateActiveFullEnergy()
+    {
+        var users = db.Collection("users").ListDocumentsAsync();
+        
+        await users.ForEachAwaitAsync(reference =>
+        {
+            var userDoc = db.Collection("users").Document($"{reference.Id}");
+            var user = new User().FromJson(db.Collection("users").Document($"{reference.Id}").GetSnapshotAsync().Result.ToDictionary());
+            user.ActiveFullEnergy = 3;
+            
+            userDoc.UpdateAsync(user.ToJson());
+
+            return Task.CompletedTask;
+        });
     }
 }
